@@ -1,22 +1,32 @@
+/* eslint-disable @typescript-eslint/member-ordering */
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import { IChat } from 'src/app/features/home/models/IChat';
+import { IMessage } from 'src/app/features/home/models/IMessage';
+import { IStatus } from 'src/app/features/home/models/IStatus';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataSharedService {
-  private chatSubject = new Subject<IChat>();
-  public chat$ = this.chatSubject.asObservable();
+  private statusSubject = new Subject<IStatus>();
+  private messageSubject = new Subject<IMessage>();
+
+  public status$ = this.statusSubject.asObservable();
+  public message$ = this.messageSubject.asObservable();
 
 
 
   constructor() { }
 
-  refreshData(chat: IChat){
-    if (chat != null) {
-      this.chatSubject.next(chat);
+  refreshData(message: IMessage | null, status: IStatus | null){
+    if (message != null) {
+      this.messageSubject.next(message);
     }
+
+    if (status != null) {
+      this.statusSubject.next(status);
+    }
+
   }
 
 }

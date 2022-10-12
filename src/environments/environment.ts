@@ -3,7 +3,23 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  name: require('../../package.json').name.charAt(0).toUpperCase() + require('../../package.json').name.slice(1),
+  version: require('../../package.json').version + '-dev',
+  middleware: "api/",
+  MQTT: {
+    username: require('../assets/config/config.dev.json').MQTT.username,
+    password: require('../assets/config/config.dev.json').MQTT.password,
+    server: require('../assets/config/config.dev.json').MQTT.server,
+    port: require('../assets/config/config.dev.json').MQTT.port,
+    protocoll: require('../assets/config/config.dev.json').MQTT.protocoll,
+    endpoint: require('../assets/config/config.dev.json').MQTT.endpoint,
+    subscriptions: {
+      status: require('../assets/config/config.dev.json').MQTT.subscriptions.status,
+      text: require('../assets/config/config.dev.json').MQTT.subscriptions.text
+    }
+  },
+  GoogleKey: require('../assets/config/config.dev.json').GoogleKey
 };
 
 /*

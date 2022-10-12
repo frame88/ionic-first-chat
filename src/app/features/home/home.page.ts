@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { IChat } from './models/IChat';
+import { IMessage } from './models/IMessage';
+import { IStatus } from './models/IStatus';
 import { DataSharedService } from 'src/app/shared/services/data-shared.service';
 
 @Component({
@@ -16,7 +17,7 @@ export class HomePage implements OnInit, OnDestroy {
 
   ngOnInit(): void {
 
-    this.subscription = this.dataService.chat$.subscribe((res) => {
+    this.subscription = this.dataService.message$.subscribe((res) => {
       //relativo testo
     });
 

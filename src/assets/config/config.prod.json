@@ -1,0 +1,16 @@
+{
+  "Middleware": "api/",
+  "MQTT": {
+    "username": "spatch",
+    "password": "cn0zrT7idUqxSU3",
+    "server": "rabbitmq.demo.intellitronika.com",
+    "port": "443",
+    "protocoll": "wss",
+    "endpoint": "",
+    "subscriptions": {
+      "status": "spatch/status",
+      "message": "spatch/message"
+    }
+  },
+  "GoogleKey": "AIzaSyDMgwrW11u3Jyn9A-xWWukvPDMN8c33N_I"
+}
