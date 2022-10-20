@@ -1,20 +1,20 @@
 <ion-app>
   <ion-split-pane contentId="main-content">
     <ion-menu contentId="main-content" type="overlay">
-      <ion-content>
+      <ion-content class="ion-align-items-end">
         <ion-list id="inbox-list">
-          <ion-list-header>Profilo</ion-list-header>
-          <ion-item>
-            <ion-button>
-              <ion-icon slot="icon-only" name="person-circle"></ion-icon>
-            </ion-button>
-          </ion-item>
-          <ion-note class="ion-margin-start">francesco@intellitronika.com</ion-note>
 
+          <!-- scrive nell'html il sender passato tramite topic, lo prende da app.component.ts -->
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
             <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
-              <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
-              <ion-label>{{ p.title }}</ion-label>
+              <!-- <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon> -->
+              <ion-icon slot name="person-circle-outline" class="ion-padding-end"></ion-icon>
+              <ion-text class="ion-no-margin" color="primary">
+                {{ p.mittente }}
+              </ion-text>
+
+              <!-- decommentabile solo se nell' IStatus riesco a creare un anteprima messaggio -->
+              <!-- <ion-note> {{ p.messaggio }} </ion-note> -->
             </ion-item>
           </ion-menu-toggle>
         </ion-list>
@@ -27,6 +27,15 @@
             <ion-label>{{ label }}</ion-label>
           </ion-item>
         </ion-list> -->
+
+        <ion-list-header>Profilo</ion-list-header>
+        <ion-item>
+          <ion-button>
+            <ion-icon slot="icon-only" name="person-circle"></ion-icon>
+          </ion-button>
+        </ion-item>
+        <ion-note class="ion-margin-start">francesco@intellitronika.com</ion-note>
+
       </ion-content>
     </ion-menu>
     <ion-router-outlet id="main-content"></ion-router-outlet>

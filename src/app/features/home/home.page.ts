@@ -12,7 +12,6 @@ import { DataSharedService } from 'src/app/shared/services/data-shared.service';
 export class HomePage implements OnInit, OnDestroy {
   subscription: Subscription = new Subscription();
 
-
   constructor(public dataService: DataSharedService) {}
 
   ngOnInit(): void {

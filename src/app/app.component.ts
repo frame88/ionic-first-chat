@@ -15,17 +15,23 @@ import { IMessage } from './features/home/models/IMessage';
 export class AppComponent implements OnDestroy {
   appVersion: string;
   subscriptions: Subscription[] = [];
+  users: string[] = [];
+  messages: string[] = [];
 
   public appPages = [
-    { title: 'Inbox', url: '/folder/Inbox', icon: 'mail' },
-    { title: 'Outbox', url: '/folder/Outbox', icon: 'paper-plane' },
-    { title: 'Favorites', url: '/folder/Favorites', icon: 'heart' },
-    { title: 'Archived', url: '/folder/Archived', icon: 'archive' },
-    { title: 'Trash', url: '/folder/Trash', icon: 'trash' },
-    { title: 'Spam', url: '/folder/Spam', icon: 'warning' },
+    // { mittente: 'Inbox', url: '/folder/Inbox', icon: 'mail',  }
+    // { title: 'Outbox', url: '/folder/Outbox', icon: 'paper-plane' },
+    // { title: 'Favorites', url: '/folder/Favorites', icon: 'heart' },
+    // { title: 'Archived', url: '/folder/Archived', icon: 'archive' },
+    // { title: 'Trash', url: '/folder/Trash', icon: 'trash' },
+    // { title: 'Spam', url: '/folder/Spam', icon: 'warning' },
   ];
 
-  public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
+  public messaggiRicevuti = [
+
+  ];
+
+  // public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
 
   constructor(
     mqttService: EventMqttService,
@@ -42,16 +48,27 @@ export class AppComponent implements OnDestroy {
         if (rtn !== '') {
           const status: IStatus = JSON.parse(rtn);
           dataShared.refreshData( null, status);
+
+          if(!this.users.includes(status.user)) {
+            this.users.push(status.user);
+            this.appPages.push({ mittente: status.user, url: '/folder/' + status.user, icon: 'mail' });
+            //this.appPages.push({ messaggio: status.text, url: '/folder/' });
+          }
         }
       })
-    );
+      );
 
-    this.subscriptions.push(
-      mqttService.topic(textTopic).subscribe((response: IMqttMessage) => {
-        const rtn = response.payload.toString();
-        if (rtn !== '') {
-          const message: IMessage = JSON.parse(rtn);
-          dataShared.refreshData(message, null);
+      this.subscriptions.push(
+        mqttService.topic(textTopic).subscribe((response: IMqttMessage) => {
+          const rtn = response.payload.toString();
+          if (rtn !== '') {
+            const message: IMessage = JSON.parse(rtn);
+            dataShared.refreshData(message, null);
+
+          // if(!this.users.includes(message.text)) {
+          //   this.users.push(message.text);
+          //   this.appPages.push({ title: message.text, url: '/folder/' + message.text, icon: 'mail' });
+          // }
         }
       })
     );

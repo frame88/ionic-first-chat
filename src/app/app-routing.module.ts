@@ -10,14 +10,15 @@ const routes: Routes = [
   {
     path: 'folder/:id',
     loadChildren: () => import('./folder/folder.module').then( m => m.FolderPageModule)
-  },  {
+  },
+  {
     path: 'home',
     loadChildren: () => import('./features/home/home.module').then( m => m.HomePageModule)
   },
   {
     path: 'shared',
     loadChildren: () => import('./shared/shared.module').then( m => m.SharedPageModule)
-  }
+  },
 
 ];
 
