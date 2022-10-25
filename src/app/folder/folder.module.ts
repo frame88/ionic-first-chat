@@ -8,12 +8,14 @@ import { FolderPageRoutingModule } from './folder-routing.module';
 
 import { FolderPage } from './folder.page';
 
+import {MatInputModule} from '@angular/material/input';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    FolderPageRoutingModule
+    FolderPageRoutingModule,
+    MatInputModule
   ],
   declarations: [FolderPage]
 })

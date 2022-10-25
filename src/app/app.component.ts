@@ -64,7 +64,7 @@ export class AppComponent implements OnDestroy {
       );
 
       this.subscriptions.push(
-        mqttService.topic(textTopic).subscribe((response: IMqttMessage) => {
+        mqttService.topic('stagechat/message/francesco_leuzzi').subscribe((response: IMqttMessage) => {
           const ris = response.payload.toString();
           if (ris !== '') {
             const message: IMessage = JSON.parse(ris);

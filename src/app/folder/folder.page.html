@@ -3,11 +3,11 @@
     <ion-buttons slot="start">
       <ion-menu-button class="ion-margin-top"></ion-menu-button>
     </ion-buttons>
-    <ion-title size="large">{{ username }}</ion-title>
     <ion-text style="display: flex;" class="ion-margin-top" slot="end">
       <h1>{{ username }}</h1>
-      <ion-icon routerLink="" size="large" name="information-circle-outline" color="primary" class="ion-margin-start"></ion-icon>
+      <ion-icon routerLink="" size="large" name="information-circle-outline" color="primary" class="ion-margin-start ion-margin-end"></ion-icon>
     </ion-text>
+
 
   </ion-toolbar>
 </ion-header>
@@ -15,17 +15,23 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar class="ion-margin-bottom ion-padding-bottom">
-      <!-- <ion-title size="large">{{ folder }}</ion-title> -->
-      <span color="primary">{{message}}</span>
+      <div>
+        <ion-label class="ion-margin-top">
+          <span [class.bg-pink]="message.length > 0" class="ion-margin-start ion-padding" color="primary">{{message}}</span>
+        </ion-label>
+      </div>
     </ion-toolbar>
   </ion-header>
 
+  <!-- <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label style="width: 100%;">Leave a comment</mat-label>
+    <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
+  </mat-form-field> -->
+
   <div id="container">
-    <!-- <strong class="capitalize">{{ folder }}</strong> -->
     <div>
-      <!-- <div *ngIf="!telInfo?.data" id="spinner-img">&nbsp;</div> -->
-      <div *ngIf="!telInfo?.user" id="spinner-img">&nbsp;</div>
+     <div style="position: relative; z-index: -1; background-color: rgba(255, 255, 255, 0.082); padding: 1em;"
+      *ngIf="!telInfo?.user" id="spinner-img">&nbsp;</div>
     </div>
   </div>
-
 </ion-content>

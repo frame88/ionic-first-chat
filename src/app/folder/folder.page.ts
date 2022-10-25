@@ -29,7 +29,8 @@ export class FolderPage implements OnInit {
   telInfo: IStatus | undefined;
   public time: string;
 
-  message = 'ciao' ;
+  message = '';
+  dbmessage = [];
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -40,8 +41,12 @@ export class FolderPage implements OnInit {
 
     this.data.message$.subscribe(r => {
       this.message = r.text;
+      this.dbmessage.push(this.message);
       console.log(this.message);
+      console.log(this.dbmessage);
     });
+
+
   }
 
 

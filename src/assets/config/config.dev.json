@@ -9,7 +9,7 @@
     "endpoint": "",
     "subscriptions": {
       "status": "stagechat/status",
-      "message": "stagechat/message"
+      "message": "stagechat/message/#"
     }
   },
   "GoogleKey": "AIzaSyDMgwrW11u3Jyn9A-xWWukvPDMN8c33N_I"
