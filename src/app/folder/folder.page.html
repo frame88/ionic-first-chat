@@ -8,7 +8,6 @@
       <ion-icon routerLink="" size="large" name="information-circle-outline" color="primary" class="ion-margin-start ion-margin-end"></ion-icon>
     </ion-text>
 
-
   </ion-toolbar>
 </ion-header>
 
@@ -23,15 +22,22 @@
     </ion-toolbar>
   </ion-header>
 
-  <!-- <mat-form-field class="example-full-width" appearance="fill">
-    <mat-label style="width: 100%;">Leave a comment</mat-label>
-    <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
-  </mat-form-field> -->
 
   <div id="container">
     <div>
-     <div style="position: relative; z-index: -1; background-color: rgba(255, 255, 255, 0.082); padding: 1em;"
+      <div style="position: relative; z-index: -1; background-color: rgba(255, 255, 255, 0.082); padding: 1em;"
       *ngIf="!telInfo?.user" id="spinner-img">&nbsp;</div>
     </div>
   </div>
 </ion-content>
+
+<!-- <mat-form-field class="example-full-width" appearance="fill">
+  <mat-label style="width: 100%;">Leave a comment</mat-label>
+  <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
+</mat-form-field> -->
+<ion-footer>
+  <ion-toolbar>
+    <input style="width: 100%; line-height: 36px; border-radius: 15px 5px 5px 15px;" text="area">
+    <button style="background-color: #3880ff; border-radius: 0 15px 15px 0; color: azure; height: 36px;" class="" slot='end' type="submit" [disabled]="">Invia</button>
+  </ion-toolbar>
+</ion-footer>
