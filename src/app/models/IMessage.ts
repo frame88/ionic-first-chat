@@ -2,7 +2,7 @@ export interface IMessage {
 
   sender: string;
   receiver: string;
-  timestamp: string;
+  timestamp: Date;
   text: string;
 
 }

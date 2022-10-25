@@ -1,4 +1,4 @@
-import { IMessage } from 'src/app/features/home/models/IMessage';
+import { IMessage } from 'src/app/models/IMessage';
 export interface IChat {
   users: string[];
   messages: IMessage[];

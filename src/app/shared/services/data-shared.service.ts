@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/prefer-for-of */
-import { IChat } from './../../features/home/models/IChat';
+import { IChat } from '../../models/IChat';
 /* eslint-disable @typescript-eslint/member-ordering */
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import { IMessage } from 'src/app/features/home/models/IMessage';
-import { IStatus } from 'src/app/features/home/models/IStatus';
+import { IMessage } from 'src/app/models/IMessage';
+import { IStatus } from 'src/app/models/IStatus';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +13,7 @@ export class DataSharedService {
   private statusSubject = new Subject<IStatus>();
   private messageSubject = new Subject<IMessage>();
 
+  //PUNTO 3
   public status$ = this.statusSubject.asObservable();
   public message$ = this.messageSubject.asObservable();
 

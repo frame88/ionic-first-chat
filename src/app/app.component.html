@@ -1,25 +1,25 @@
 <ion-app>
   <ion-split-pane contentId="main-content">
     <ion-menu contentId="main-content" type="overlay">
-      <ion-content class="ion-align-items-end">
-        <ion-list id="inbox-list">
-
-          <!-- scrive nell'html il sender passato tramite topic, lo prende da app.component.ts -->
+      <ion-content>
+        <ion-list id="inbox-list" class="ion-margin-bottom">
+          <ion-list-header>
+            <ion-label>
+              Messaggi
+            </ion-label>
+          </ion-list-header>
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
             <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
-              <!-- <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon> -->
               <ion-icon slot name="person-circle-outline" class="ion-padding-end"></ion-icon>
               <ion-text class="ion-no-margin" color="primary">
                 {{ p.mittente }}
               </ion-text>
-
-              <!-- decommentabile solo se nell' IStatus riesco a creare un anteprima messaggio -->
-              <!-- <ion-note> {{ p.messaggio }} </ion-note> -->
+                {{ p.messaggio }}
             </ion-item>
           </ion-menu-toggle>
         </ion-list>
-
         <!-- <ion-list id="labels-list">
+
           <ion-list-header>Labels</ion-list-header>
 
           <ion-item *ngFor="let label of labels" lines="none">
@@ -27,16 +27,18 @@
             <ion-label>{{ label }}</ion-label>
           </ion-item>
         </ion-list> -->
-
-        <ion-list-header>Profilo</ion-list-header>
-        <ion-item>
-          <ion-button>
-            <ion-icon slot="icon-only" name="person-circle"></ion-icon>
-          </ion-button>
-        </ion-item>
-        <ion-note class="ion-margin-start">francesco@intellitronika.com</ion-note>
-
       </ion-content>
+
+      <ion-item>
+        <ion-button>
+          <ion-icon slot="icon-only" name="person-circle" class="ion-padding"></ion-icon>
+        </ion-button>
+      </ion-item>
+
+      <div class="ion-margin-bottom ion-margin-start">
+        <ion-note color="medium">francesco@intellitronika.com</ion-note>
+        <ion-icon class="ion-margin-start" name="mail-outline"></ion-icon>
+      </div>
     </ion-menu>
     <ion-router-outlet id="main-content"></ion-router-outlet>
   </ion-split-pane>

@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { IMessage } from './models/IMessage';
-import { IStatus } from './models/IStatus';
+import { IMessage } from '../../models/IMessage';
+import { IStatus } from '../../models/IStatus';
 import { DataSharedService } from 'src/app/shared/services/data-shared.service';
 
 @Component({

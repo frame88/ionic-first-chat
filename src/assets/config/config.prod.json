@@ -8,8 +8,8 @@
     "protocoll": "wss",
     "endpoint": "",
     "subscriptions": {
-      "status": "spatch/status",
-      "message": "spatch/message"
+      "status": "stagechat/status",
+      "message": "stagechat/message"
     }
   },
   "GoogleKey": "AIzaSyDMgwrW11u3Jyn9A-xWWukvPDMN8c33N_I"

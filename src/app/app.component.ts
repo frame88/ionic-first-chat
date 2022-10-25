@@ -5,8 +5,8 @@ import { Subscription } from 'rxjs';
 import { EventMqttService } from './shared/services/event-mqtt.service';
 import { IMqttMessage } from 'ngx-mqtt';
 import { DataSharedService } from './shared/services/data-shared.service';
-import { IStatus } from './features/home/models/IStatus';
-import { IMessage } from './features/home/models/IMessage';
+import { IStatus } from './models/IStatus';
+import { IMessage } from './models/IMessage';
 
 @Component({
   selector: 'app-root',
@@ -40,30 +40,36 @@ export class AppComponent implements OnDestroy {
     this.appVersion = environment.version;
 
     const statusTopic = environment.MQTT.subscriptions.status;
-    const textTopic = environment.MQTT.subscriptions.text;
+    const textTopic = environment.MQTT.subscriptions.message;
 
+
+    //CREO LA SOTTOSCRIZIONE AI DUE TOPIC, COME SCRITTO NEL PUNTO 2
     this.subscriptions.push(
       mqttService.topic(statusTopic).subscribe((response: IMqttMessage) => {
-        const rtn = response.payload.toString();
-        if (rtn !== '') {
-          const status: IStatus = JSON.parse(rtn);
-          dataShared.refreshData( null, status);
+        const ris = response.payload.toString();
+        if (ris !== '') {
+          const status: IStatus = JSON.parse(ris);
+          dataShared.refreshData(null, status);
 
-          if(!this.users.includes(status.user)) {
-            this.users.push(status.user);
-            this.appPages.push({ mittente: status.user, url: '/folder/' + status.user, icon: 'mail' });
-            //this.appPages.push({ messaggio: status.text, url: '/folder/' });
-          }
-        }
+           if(!this.users.includes(status.user)) {
+             this.users.push(status.user);
+             this.appPages.push({ mittente: status.user, url: '/folder/' + status.user, icon: 'mail' });
+            // this.appPages.push({ messaggio: status.text, url: '/folder/' });
+           }
+
+        // this.appPages.push(status.user);
+        // console.log(status.user);
+       }
       })
       );
 
       this.subscriptions.push(
         mqttService.topic(textTopic).subscribe((response: IMqttMessage) => {
-          const rtn = response.payload.toString();
-          if (rtn !== '') {
-            const message: IMessage = JSON.parse(rtn);
+          const ris = response.payload.toString();
+          if (ris !== '') {
+            const message: IMessage = JSON.parse(ris);
             dataShared.refreshData(message, null);
+            console.log(ris);
 
           // if(!this.users.includes(message.text)) {
           //   this.users.push(message.text);

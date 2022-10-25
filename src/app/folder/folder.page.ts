@@ -1,5 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewChecked, ViewChild, ElementRef } from '@angular/core';
+import { IMessage } from '../models/IMessage';
 import { ActivatedRoute } from '@angular/router';
+
+import { MqttService } from 'ngx-mqtt';
+
+import { EventMqttService } from '../shared/services/event-mqtt.service';
+
+import { Subscription } from 'rxjs';
+import { DataSharedService } from '../shared/services/data-shared.service';
+
+import { IStatus } from 'src/app/models/IStatus';
+import { IChat } from '../models/IChat';
 
 @Component({
   selector: 'app-folder',
@@ -7,12 +18,31 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./folder.page.scss'],
 })
 export class FolderPage implements OnInit {
-  public folder: string;
 
-  constructor(private activatedRoute: ActivatedRoute) { }
+  @ViewChild('scrollMe') private myscrollContainer: ElementRef;
 
+  public username: string;
+  public messages: IMessage[] = [];
+  public subscriptions: Subscription[] = [];
+  chat: IChat;
+
+  telInfo: IStatus | undefined;
+  public time: string;
+
+  message = 'ciao' ;
+
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private data: DataSharedService
+    ) { }
   ngOnInit() {
-    this.folder = this.activatedRoute.snapshot.paramMap.get('id');
+    this.username = this.activatedRoute.snapshot.paramMap.get('id');
+
+    this.data.message$.subscribe(r => {
+      this.message = r.text;
+      console.log(this.message);
+    });
   }
+
 
 }

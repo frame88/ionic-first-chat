@@ -16,10 +16,10 @@ export const environment = {
     endpoint: require('../assets/config/config.dev.json').MQTT.endpoint,
     subscriptions: {
       status: require('../assets/config/config.dev.json').MQTT.subscriptions.status,
-      text: require('../assets/config/config.dev.json').MQTT.subscriptions.text
+      message: require('../assets/config/config.dev.json').MQTT.subscriptions.message
     }
   },
-  GoogleKey: require('../assets/config/config.dev.json').GoogleKey
+  googleKey: require('../assets/config/config.dev.json').GoogleKey
 };
 
 /*
