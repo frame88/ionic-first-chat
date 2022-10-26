@@ -11,6 +11,7 @@ import { DataSharedService } from '../shared/services/data-shared.service';
 
 import { IStatus } from 'src/app/models/IStatus';
 import { IChat } from '../models/IChat';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-folder',
@@ -30,22 +31,45 @@ export class FolderPage implements OnInit {
   public time: string;
 
   message = '';
-  dbmessage = [];
+  dbmessage: IMessage[] = [];
+  activeChat: IChat;
+  formData: FormGroup = this.fb.group({
+    //da riempire
+   });
+  chatUser: string;
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private data: DataSharedService
-    ) { }
-  ngOnInit() {
+    private data: DataSharedService,
+    private fb: FormBuilder,
+    private _mqtt: MqttService,
+    // public store: StoreMessagesService
+    ) {
+        this.chatUser = this.activatedRoute.snapshot.paramMap.get('id');
+    }
+    ngOnInit() {
+      //persona con cui sto parlando
     this.username = this.activatedRoute.snapshot.paramMap.get('id');
 
     this.data.message$.subscribe(r => {
-      this.message = r.text;
-      this.dbmessage.push(this.message);
-      console.log(this.message);
-      console.log(this.dbmessage);
+      if(r !== null) {
+        this.activeChat = this.data.chats.filter((value, index) => this.data.chats[index].users.includes(this.username))[0];
+        console.log(this.activeChat);
+        this.dbmessage = this.activeChat.messages;
+      }
+      // this.message = r.text;
+      // this.dbmessage.push(this.message);
+      // console.log(this.message);
+      // console.log(this.dbmessage);
+      // //
+      // console.log(this.formData);
     });
 
+    console.log(this.formData);
 
+    // MODIFICA STRINGA
+    // this.username = this.username.replace('.',' ');
+    // this.username = this.username.charAt(0).toUpperCase() + this.username.slice(1);
   }
+
 }

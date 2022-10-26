@@ -29,7 +29,6 @@ export class DataSharedService {
     }
 
     if (message != null) {
-      this.messageSubject.next(message);
 
       if(this.chats.length === 0) {
         const chatItem: IChat = {
@@ -52,6 +51,8 @@ export class DataSharedService {
         }
 
       }
+
+      this.messageSubject.next(message);
     }
 
   }

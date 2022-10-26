@@ -7,26 +7,27 @@
       <h1>{{ username }}</h1>
       <ion-icon routerLink="" size="large" name="information-circle-outline" color="primary" class="ion-margin-start ion-margin-end"></ion-icon>
     </ion-text>
-
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar class="ion-margin-bottom ion-padding-bottom">
-      <div>
-        <ion-label class="ion-margin-top">
-          <span [class.bg-pink]="message.length > 0" class="ion-margin-start ion-padding" color="primary">{{message}}</span>
-        </ion-label>
-      </div>
+
     </ion-toolbar>
   </ion-header>
 
 
   <div id="container">
     <div>
-      <div style="position: relative; z-index: -1; background-color: rgba(255, 255, 255, 0.082); padding: 1em;"
-      *ngIf="!telInfo?.user" id="spinner-img">&nbsp;</div>
+      <div *ngFor="let message of dbmessage">
+        <ion-label class="ion-margin-top">
+          <span [class.bg-pink]="message.text.length > 0" class="ion-margin-start ion-padding"
+            color="primary">{{message.text}}</span>
+        </ion-label>
+      </div>
+      <!-- <div style="position: relative; z-index: -1; background-color: rgba(255, 255, 255, 0.082); padding: 1em;"
+      *ngIf="!telInfo?.user" id="spinner-img">&nbsp;</div> -->
     </div>
   </div>
 </ion-content>
@@ -35,9 +36,13 @@
   <mat-label style="width: 100%;">Leave a comment</mat-label>
   <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
 </mat-form-field> -->
-<ion-footer>
+
+<ion-footer style="background-color: gray;">
   <ion-toolbar>
-    <input style="width: 100%; line-height: 36px; border-radius: 15px 5px 5px 15px;" text="area">
-    <button style="background-color: #3880ff; border-radius: 0 15px 15px 0; color: azure; height: 36px;" class="" slot='end' type="submit" [disabled]="">Invia</button>
+    <form [formGroup]="formData">
+    <!-- <form [formGroup]="formData" (ngSubmit)="sendmsg(messageForm.value.msg)"> -->
+      <input placeholder="Scrivi qualcosa..." style="width: 100%; line-height: 36px; border-radius: 15px 5px 5px 15px;" text="area">
+      <button class="invia" slot='end' type="submit" [disabled]="">Invia</button>
+    </form>
   </ion-toolbar>
 </ion-footer>

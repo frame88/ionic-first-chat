@@ -5,11 +5,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { SharedPageModule } from './shared/shared.module';
 import { NgModule } from '@angular/core';
 import { registerLocaleData } from '@angular/common';
-import localeIt from '@angular/common/locales/it';
-import localeItExtra from '@angular/common/locales/extra/it';
 import { IMqttServiceOptions, MqttModule } from 'ngx-mqtt';
 import { RouteReuseStrategy } from '@angular/router';
-
+import localeIt from '@angular/common/locales/it';
+import localeItExtra from '@angular/common/locales/extra/it';
 
 
 registerLocaleData(localeIt, 'it-IT', localeItExtra);

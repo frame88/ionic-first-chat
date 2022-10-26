@@ -37,6 +37,7 @@ export class AppComponent implements OnDestroy {
     mqttService: EventMqttService,
     dataShared: DataSharedService
   ) {
+
     this.appVersion = environment.version;
 
     const statusTopic = environment.MQTT.subscriptions.status;

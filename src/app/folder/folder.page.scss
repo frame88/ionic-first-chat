@@ -31,3 +31,24 @@ ion-menu-button {
   background-color: rgb(224, 121, 224);
   border-radius: 15px;
 }
+
+.invia {
+  padding-left: 1em;
+  padding-right: 1em;
+  // background: linear-gradient(45deg, #bed6ff, #3880ff );
+  background-color: #3880ff;
+  border-radius: 0 15px 15px 0;
+  color: azure;
+  height: 36px;
+  margin-right: 1em;
+}
+
+input {
+  margin-left: 1em;
+}
+
+form {
+  display: flex;
+  align-items: center;
+}
+
