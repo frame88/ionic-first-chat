@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-menu-button class="ion-margin-top"></ion-menu-button>
     </ion-buttons>
-    <ion-text style="display: flex;" class="ion-margin-top" slot="end">
+    <ion-text style="display: flex;" class="ion-margin-top ion-padding-top" slot="end">
       <h1>{{ username }}</h1>
       <ion-icon routerLink="" size="large" name="information-circle-outline" color="primary" class="ion-margin-start ion-margin-end"></ion-icon>
     </ion-text>
@@ -42,12 +42,12 @@
   <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
 </mat-form-field> -->
 
-<ion-footer>
+<ion-footer [translucent]="true">
   <ion-toolbar>
-    <form [formGroup]="formData">
+    <form #f="ngForm" (submit)="send(f)">
       <!-- <form [formGroup]="formData" (ngSubmit)="sendmsg(messageForm.value.msg)"> -->
-      <input placeholder="Scrivi qualcosa..." style="width: 100%; line-height: 36px; border-radius: 15px 5px 5px 15px;" text="area">
-      <button class="invia" slot='end' type="submit" [disabled]="">Invia</button>
+      <ion-textarea class="ion-margin-start" placeholder="   Scrivi qualcosa..." [ngModel] name="textToSend" autoGrow></ion-textarea>
+      <button class="invia" slot='end' type="submit">Invia</button>
     </form>
   </ion-toolbar>
 </ion-footer>

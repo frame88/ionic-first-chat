@@ -4,18 +4,15 @@
       <ion-content>
         <ion-list id="inbox-list" class="ion-margin-bottom">
           <ion-list-header>
-            <ion-label>
-              Messaggi
+            <ion-label class="ion-padding">
+              <h1>Messaggi</h1>
             </ion-label>
           </ion-list-header>
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
             <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
               <ion-icon slot name="person-circle-outline" class="ion-padding-end"></ion-icon>
-              <ion-text class="ion-no-margin" color="primary">
-                {{ p.mittente }}
-                
-              </ion-text>
-                {{ p.messaggio }}
+              <ion-text class="ion-no-margin" color="primary">{{ p.mittente }}</ion-text>
+              <!-- {{ p.messaggio }} -->
             </ion-item>
           </ion-menu-toggle>
         </ion-list>
@@ -38,9 +35,12 @@
 
       <div class="ion-margin-bottom ion-margin-start">
         <ion-note color="medium">francesco@intellitronika.com</ion-note>
-        <ion-icon class="ion-margin-start" name="mail-outline"></ion-icon>
+        <a href="mailto:francesco.leuzzi@intellitronika.com">
+          <ion-icon class="ion-margin-start" name="mail-outline"></ion-icon>
+        </a>
       </div>
     </ion-menu>
     <ion-router-outlet id="main-content"></ion-router-outlet>
   </ion-split-pane>
 </ion-app>
+

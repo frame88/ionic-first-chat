@@ -41,7 +41,7 @@ form {
   text-align: left;
   min-width: 10%;
   max-width: 55%;
-  box-shadow: 15px 20px 25px rgba(224, 121, 224, 0.267);
+  // box-shadow: 15px 20px 25px rgba(224, 121, 224, 0.267);
   padding: 0.8em;
   //width:calc()
   //border: 3px solid rgba(89, 0, 255, 0.479);
@@ -61,6 +61,13 @@ form {
     bottom: 0;
     font-size: 85%;
   }
+}
+
+ion-textarea {
+  border-radius: 15px 5px 5px 15px;
+  border: 2px solid rgba(255, 255, 255, 0.267);
+  width: 100%;
+  margin-bottom: 0.5em;
 }
 
 
