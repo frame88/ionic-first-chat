@@ -52,9 +52,9 @@ export class AppComponent implements OnDestroy {
           const status: IStatus = JSON.parse(ris);
           dataShared.refreshData(null, status);
 
-           if(!this.users.includes(status.user)) {
-             this.users.push(status.user);
-             this.appPages.push({ mittente: status.user, url: '/folder/' + status.user, icon: 'mail' });
+          if(!this.users.includes(status.user)) {
+            this.users.push(status.user);
+            this.appPages.push({ mittente: status.user.replace('.',' '), url: '/folder/' + status.user, icon: 'mail' });
             // this.appPages.push({ messaggio: status.text, url: '/folder/' });
            }
 
@@ -63,6 +63,8 @@ export class AppComponent implements OnDestroy {
        }
       })
       );
+
+
 
       this.subscriptions.push(
         mqttService.topic('stagechat/message/francesco_leuzzi').subscribe((response: IMqttMessage) => {

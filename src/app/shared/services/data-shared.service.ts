@@ -43,7 +43,7 @@ export class DataSharedService {
           } else {
             const chatItem: IChat = {
               users: [message.receiver, message.sender],
-              messages: [message]
+              messages: []
             };
             this.chats.push(chatItem);
           }

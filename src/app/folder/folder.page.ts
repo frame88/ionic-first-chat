@@ -50,12 +50,22 @@ export class FolderPage implements OnInit {
     ngOnInit() {
       //persona con cui sto parlando
     this.username = this.activatedRoute.snapshot.paramMap.get('id');
+    //VISUALIZZA TUTTI I MESSAGGI
+    this.activeChat = this.data.chats.filter((value, index) => this.data.chats[index].users.includes(this.username))[0];
+    console.log(this.activeChat);
+    if (this.activeChat !== undefined ) {
+      this.dbmessage = this.activeChat.messages;
+    }
 
+    //VISUALIZZA IL MESSAGGIO NUOVO
+    // QUELLO DI SOPRA PIU QUELLO DI SOTTO COMPONGONO LA CHAT CORENTE
     this.data.message$.subscribe(r => {
       if(r !== null) {
         this.activeChat = this.data.chats.filter((value, index) => this.data.chats[index].users.includes(this.username))[0];
         console.log(this.activeChat);
-        this.dbmessage = this.activeChat.messages;
+        if (this.activeChat !== undefined ) {
+          this.dbmessage = this.activeChat.messages;
+        }
       }
       // this.message = r.text;
       // this.dbmessage.push(this.message);

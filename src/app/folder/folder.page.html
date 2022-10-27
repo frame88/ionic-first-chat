@@ -1,4 +1,4 @@
-<ion-header [translucent]="true">
+<ion-header [translucent]="true" class="ion-margin-bottom">
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-menu-button class="ion-margin-top"></ion-menu-button>
@@ -12,35 +12,40 @@
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
-    <ion-toolbar class="ion-margin-bottom ion-padding-bottom">
+    <!-- <ion-toolbar class="ion-margin-bottom ion-padding-bottom">
 
-    </ion-toolbar>
+    </ion-toolbar> -->
   </ion-header>
 
 
   <div id="container">
-    <div>
+    <div class="chat-container">
       <div *ngFor="let message of dbmessage">
         <ion-label class="ion-margin-top">
-          <span [class.bg-pink]="message.text.length > 0" class="ion-margin-start ion-padding"
-            color="primary">{{message.text}}</span>
+          <div [class.bg-pink]="message.text.length > 0" class="box-message ion-margin-bottom ion-margin-start">
+            <div class="cont-text">
+              <span class="text-message" color="primary">{{message.text}}</span>
+            </div>
+            <span class="time-message">{{message.timestamp | date:'H:mm'}}</span>
+          </div>
         </ion-label>
       </div>
-      <!-- <div style="position: relative; z-index: -1; background-color: rgba(255, 255, 255, 0.082); padding: 1em;"
-      *ngIf="!telInfo?.user" id="spinner-img">&nbsp;</div> -->
+      <div style="display: flex; justify-content: center; z-index: -1; background-color: rgba(255, 255, 255, 0.082); padding: 1em;" id="spinner-img">
+          <!-- <img style="z-index: -10;" src="../../assets/images/intellitronika-symbol.svg" alt=""> -->
+          <!-- background-image: url("../../assets/images/intellitronika-symbol.svg"); -->
+      </div>
     </div>
   </div>
 </ion-content>
-
 <!-- <mat-form-field class="example-full-width" appearance="fill">
   <mat-label style="width: 100%;">Leave a comment</mat-label>
   <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
 </mat-form-field> -->
 
-<ion-footer style="background-color: gray;">
+<ion-footer>
   <ion-toolbar>
     <form [formGroup]="formData">
-    <!-- <form [formGroup]="formData" (ngSubmit)="sendmsg(messageForm.value.msg)"> -->
+      <!-- <form [formGroup]="formData" (ngSubmit)="sendmsg(messageForm.value.msg)"> -->
       <input placeholder="Scrivi qualcosa..." style="width: 100%; line-height: 36px; border-radius: 15px 5px 5px 15px;" text="area">
       <button class="invia" slot='end' type="submit" [disabled]="">Invia</button>
     </form>
