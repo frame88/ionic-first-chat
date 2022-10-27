@@ -32,7 +32,6 @@ form {
 }
 
 .bg-pink {
-  background-color: rgba(224, 121, 224, 0.884);
   border-radius: 15px;
 }
 
@@ -70,5 +69,14 @@ ion-textarea {
   margin-bottom: 0.5em;
 }
 
+.received {
+  background-color: rgba(224, 121, 224, 0.884);
+  color: black;
+}
+
+.sent {
+  background-color: rgb(184, 245, 148);
+  color: black;
+}
 
 

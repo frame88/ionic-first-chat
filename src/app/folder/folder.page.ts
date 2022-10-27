@@ -30,7 +30,7 @@ export class FolderPage implements OnInit {
   public messages: IMessage[] = [];
   public subscriptions: Subscription[] = [];
   chat: IChat;
-
+  io = 'francesco.leuzzi';
   telInfo: IStatus | undefined;
   public time: string;
 
@@ -107,7 +107,7 @@ export class FolderPage implements OnInit {
     // this.auth.authAppPages = this.folderPages;
     this.data.refreshData(messageToSend, null);
     this.chat = this.data.chats.filter((value, index) => this.data.chats[index].users.includes('francesco.leuzzi') && this.data.chats[index].users.includes(this.username))[0];
-    if (this.chat !== undefined) {
+    if (this.chat) {
       this.messages = [];
       for (let i = 0; i < this.chat.messages.length; i++) {
         this.messages.push(this.chat.messages[i]);

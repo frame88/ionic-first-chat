@@ -22,9 +22,10 @@
     <div class="chat-container">
       <div *ngFor="let message of dbmessage">
         <ion-label class="ion-margin-top">
-          <div [class.bg-pink]="message.text.length > 0" class="box-message ion-margin-bottom ion-margin-start">
+          <div class="box-message ion-margin-bottom ion-margin-start">
+          <!-- <div [class.bg-pink]="message.text.length > 0" class="box-message ion-margin-bottom ion-margin-start"> -->
             <div class="cont-text">
-              <span class="text-message" color="primary">{{message.text}}</span>
+              <span [ngClass]="{'received': message.receiver === io, 'sent': message.sender === io}" class="text-message" color="primary">{{message.text}}</span>
             </div>
             <span class="time-message">{{message.timestamp | date:'H:mm'}}</span>
           </div>

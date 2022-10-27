@@ -9,7 +9,7 @@
             </ion-label>
           </ion-list-header>
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
-            <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
+            <ion-item color="light" routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
               <ion-icon slot name="person-circle-outline" class="ion-padding-end"></ion-icon>
               <ion-text class="ion-no-margin" color="primary">{{ p.mittente }}</ion-text>
               <!-- {{ p.messaggio }} -->
