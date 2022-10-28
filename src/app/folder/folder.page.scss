@@ -1,6 +1,3 @@
-.chat-container {
-  height: 20vh;
-}
 
 .invia {
   padding-left: 1em;
@@ -38,27 +35,17 @@ form {
 .box-message {
   position: relative;
   text-align: left;
-  min-width: 10%;
-  max-width: 55%;
-  // box-shadow: 15px 20px 25px rgba(224, 121, 224, 0.267);
   padding: 0.8em;
-  //width:calc()
+  max-width: 55%;
   //border: 3px solid rgba(89, 0, 255, 0.479);
   //border: 2px solid rgba(255, 255, 255, 0.418);
 
-  .cont-text {
-    margin-bottom: 1em;
-    .text-message {
-      font-size: 110%;
-      //padding: 30px;
-    }
-  }
 
   .time-message {
     position: absolute;
     right: 1em;
     bottom: 0;
-    font-size: 85%;
+    font-size: 80%;
   }
 }
 
@@ -71,12 +58,19 @@ ion-textarea {
 
 .received {
   background-color: rgba(224, 121, 224, 0.884);
-  color: black;
+  border-radius: 15px;
+  align-self: start;
+  // background-color: rgb(255, 245, 148);
+  // box-shadow: 15px 20px 25px rgba(231, 214, 231, 0.267);
 }
 
 .sent {
-  background-color: rgb(184, 245, 148);
-  color: black;
+  // box-shadow: -15px 20px 25px rgba(231, 214, 231, 0.267);
+  background-color: rgb(89, 150, 255);
+  color: white;
+  padding: 1em;
+  border-radius: 15px;
+  align-self: end;
+  margin-right: 1em;
 }
-
 

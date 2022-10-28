@@ -11,7 +11,7 @@
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
             <ion-item color="light" routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
               <ion-icon slot name="person-circle-outline" class="ion-padding-end"></ion-icon>
-              <ion-text class="ion-no-margin" color="primary">{{ p.mittente }}</ion-text>
+              <ion-text class="ion-no-margin" color="primary">{{ p.mittente.charAt(0).toUpperCase() + p.mittente.slice(1) }}</ion-text>
               <!-- {{ p.messaggio }} -->
             </ion-item>
           </ion-menu-toggle>

@@ -118,3 +118,19 @@ export class FolderPage implements OnInit {
 }
 
 }
+
+
+  //con questo script dovrei riuscire a far vedere il nome di chi mi scrive,
+  //nella parte header della chat, diviso da uno spazio anzichè da un punto, e con le iniziali maiuscole
+  //ma, nonostante riesca nell'obbiettivo, poi sconvolge il layout della folder. NON CAPISCO PERCHè!!!!!!!
+
+  //formattazione nome utente della chat
+
+  // console.log('chatUser = ',this.chatUser);
+  // const namee = this.chatUser.split('.')[0];
+  // const surnamee = this.chatUser.split('.')[1];
+  // const name = namee.charAt(0).toUpperCase() + namee.slice(1);
+  // const surname = surnamee.charAt(0).toUpperCase() + surnamee.slice(1);
+  // this.chatUser = name + ' ' + surname;
+  // console.log(this.chatUser);
+

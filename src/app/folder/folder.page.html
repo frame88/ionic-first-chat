@@ -4,7 +4,7 @@
       <ion-menu-button class="ion-margin-top"></ion-menu-button>
     </ion-buttons>
     <ion-text style="display: flex;" class="ion-margin-top ion-padding-top" slot="end">
-      <h1>{{ username }}</h1>
+      <h1>{{ chatUser }}</h1>
       <ion-icon routerLink="" size="large" name="information-circle-outline" color="primary" class="ion-margin-start ion-margin-end"></ion-icon>
     </ion-text>
   </ion-toolbar>
@@ -21,11 +21,13 @@
   <div id="container">
     <div class="chat-container">
       <div *ngFor="let message of dbmessage">
-        <ion-label class="ion-margin-top">
-          <div class="box-message ion-margin-bottom ion-margin-start">
+        <ion-label class="chat-container" style="display: flex; flex-direction: column;">
+          <div [ngClass]="{'received': message.receiver === io, 'sent': message.sender === io}"
+              class="text-message ion-padding" color="primary" class="box-message ion-margin-bottom ion-margin-start" style="justify-content: end;">
           <!-- <div [class.bg-pink]="message.text.length > 0" class="box-message ion-margin-bottom ion-margin-start"> -->
-            <div class="cont-text">
-              <span [ngClass]="{'received': message.receiver === io, 'sent': message.sender === io}" class="text-message" color="primary">{{message.text}}</span>
+            <div class="ciao ion-margin-bottom">
+              <span>{{message.text}}</span>
+
             </div>
             <span class="time-message">{{message.timestamp | date:'H:mm'}}</span>
           </div>
