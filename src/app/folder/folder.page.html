@@ -17,7 +17,6 @@
     </ion-toolbar> -->
   </ion-header>
 
-
   <div id="container">
     <div class="chat-container">
       <div *ngFor="let message of dbmessage">
@@ -49,7 +48,7 @@
   <ion-toolbar>
     <form #f="ngForm" (submit)="send(f)">
       <!-- <form [formGroup]="formData" (ngSubmit)="sendmsg(messageForm.value.msg)"> -->
-      <ion-textarea class="ion-margin-start" placeholder="   Scrivi qualcosa..." [ngModel] name="textToSend" autoGrow></ion-textarea>
+      <ion-input class="ion-margin-start" placeholder=" Scrivi qualcosa..." [ngModel] name="textToSend" autoGrow></ion-input>
       <button class="invia" slot='end' type="submit">Invia</button>
     </form>
   </ion-toolbar>

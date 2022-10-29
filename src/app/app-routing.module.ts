@@ -18,7 +18,11 @@ const routes: Routes = [
   {
     path: 'shared',
     loadChildren: () => import('./shared/shared.module').then( m => m.SharedPageModule)
+  },  {
+    path: 'login-page',
+    loadChildren: () => import('./core/login-page/login-page.module').then( m => m.LoginPagePageModule)
   },
+
 
 ];
 
